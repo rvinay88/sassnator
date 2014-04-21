@@ -23,7 +23,7 @@ var SassnatorGenerator = yeoman.generators.Base.extend({
     this.log(this.yeoman);
 
     // replace it with a short and sweet description of your generator
-    this.log(chalk.magenta('You\'re using the fantastic Sassnator generator.'));
+    this.log(chalk.magenta('Scaffold folder structure for maintainable sass files'));
 
     var prompts = [{
       type: 'confirm',
@@ -39,29 +39,96 @@ var SassnatorGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  var root_folders = [
+    'stylesheets',
+    'scss',
+    'scripts'
+  ],
+  var base = [
+    'normalize',
+    'base',
+    'grid',
+    'colors',
+    'typography',//todo typography template - code, links, copy, headings, address, blockquote
+    'helpers', //pull-right, pull-left, text-right, text-left
+    'states',
+    'animations', // animate.css
+  ],
+
+  var components = [
+    'buttons', // loading states, with icons, normal, hover, pressed states use sassy-buttons
+    'button-groups', // , loading states
+    'forms', // inputs, checkboxes, radio buttons, switches,
+    'accordion',
+    'media', //images, audio, video
+    'lists',
+    'carousel',
+    'tables',
+    'icons',
+    'dropdowns',
+    'labels', // with close button also tags
+    'badges',
+    'panels', //cards, titled well, cards with images, cards with tables
+    'wells', //cards header footer and main
+    'pagination',
+    'tab',
+    'slider',
+    'breadcrumbs',
+    'alerts',
+    'thumbnails',
+    'tooltips',
+    'modal', //frameless, with frame
+    'sidenav',
+  ],
+  var modules = [
+
+    'header',
+    'footer',
+    'navigation',
+    'sidebar',
+    'gallery',
+    'article',
+    'comment', // media object
+  ]
+
+  var scss = [
+        'templates',
+        'scss',
+        'scss/base',
+        'scss/grids',
+        'scss/typography',
+        'scss/helpers',
+        'scss/colors',
+        'scss/states',
+        'scss/modules',
+        'scss/modules/forms',
+        'scss/modules/buttons',
+        'scss/modules/alerts',
+        'scss/modules/lists',
+        'scss/modules/breadcrumbs',
+        'scss/modules/media',
+        'scss/modules/panels',
+        'scss/modules/badges',
+        'scss/modules/labels',
+        'scss/modules/tables',
+        'scss/modules/navigation',
+        'scss/modules/pagination',
+  ],
+
+  var javascript = [
+    'autocomplete',
+    'tabs',
+    'accordions',
+    'datepicker',
+    'notify', //kinda like alerts but for the entire screen
+    'search',//with close button
+    'upload', //drag-drop or upload container
+  ],
+
   app: function () {
-    this.mkdir('app');
-    this.mkdir('app/templates');
-    this.mkdir('app/scss');
-    this.mkdir('app/scss/base');
-    this.mkdir('app/scss/grids');
-    this.mkdir('app/scss/typography');
-    this.mkdir('app/scss/helpers');
-    this.mkdir('app/scss/colors');
-    this.mkdir('app/scss/states');
-    this.mkdir('app/scss/modules');
-    this.mkdir('app/scss/modules/forms');
-    this.mkdir('app/scss/modules/buttons');
-    this.mkdir('app/scss/modules/alerts');
-    this.mkdir('app/scss/modules/lists');
-    this.mkdir('app/scss/modules/breadcrumbs');
-    this.mkdir('app/scss/modules/media');
-    this.mkdir('app/scss/modules/panels');
-    this.mkdir('app/scss/modules/badges');
-    this.mkdir('app/scss/modules/labels');
-    this.mkdir('app/scss/modules/tables');
-    this.mkdir('app/scss/modules/navigation');
-    this.mkdir('app/scss/modules/pagination');
+    for(var i = 0; i < folders.length; i++) {
+        this.mkdir('app/'+folders[i]);
+    }
 
     this.mkdir('app/css');
 
